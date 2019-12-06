@@ -1,6 +1,7 @@
 // STEP 3: Create Article cards.
 // -----------------------
-// Send an HTTP GET request to the following address: https://lambda-times-backend.herokuapp.com/articles
+// Send an HTTP GET request to the following address: 
+//https://lambda-times-backend.herokuapp.com/articles
 // Stduy the response data you get back, closely.
 // You will be creating a component for each 'article' in the list.
 // This won't be as easy as just iterating over an array though.
@@ -17,3 +18,47 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+    axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+	.then(response => {
+        const artcls = response.data.articles;
+        artcls.artcls;
+	 })
+	.catch(err => {
+	    console.log('Error: ', err);
+	});
+	    function article (artcls) {
+         const b = artcls.artcls;
+          for (var key in b) {
+            b[key].array.forEach(element => {
+            const card = document.createElement('div');
+            const headline = document.createElement('div');
+            const author = document.createElement('div');
+            const imgContainer = document.createElement('div');
+            const authImg = document.createElement('img');
+            const authNme = document.createElement('span');
+                    
+            // Added classes
+            card.classList.add('card');
+            headline.classList.add('headline');
+            author.classList.add('author')
+            imgContainer.classList.add('img-container');
+                      
+            // Added the textContent
+                    
+            // card.dataset.key = key;
+            headline.textContent = element.headline;
+            author.textContent = element.authNme;
+            authImg.src = element.authorPhoto;
+            authNme.textContent = element.authNme;
+        
+            // Appended the required classes / selectors 
+                    
+            card.appendChild(headline);
+            card.appendChild(author);
+            author.appendChild(imgContainer);
+            author.appendChild(authNme);
+            imgContainer.appendChild(authImg);
+	    })
+	  }
+	};
